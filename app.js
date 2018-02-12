@@ -9,13 +9,13 @@ server.listen(process.env.port || process.env.PORT || 3978, ()=>{
 
 //Creatr chat connector for communication with the Bot Framework Service
 const connector = new builder.ChatConnector({
-    appId: "d753d3d7-d803-4290-8ed4-28cbcaee58a3",
-    appPassword: "9l7Eb#]]RK[/_th*",
+    appId: process.env.MICROSOFT_APP_ID,
+    appPassword: process.env.MICROSOFT_APP_PASSWORD
 });
 // console.log(connector);
 
 //Listen for message from users
-server.post('https://mybotteerapat.azurewebsites.net/api/messages', connector.listen());
+server.post('api/messages', connector.listen());
 
 
 var bot = new builder.UniversalBot(connector);
